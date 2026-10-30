@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joy Saha | Product Manager Portfolio</title>
+  <!-- Google Font Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons for UI accents -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            },
+            accent: {
+              teal: '#0ea5e9',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle glassmorphism and animations */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-card {
+      background: rgba(23, 23, 31, 0.82);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15) 0%, rgba(14, 165, 233, 0.05) 45%, transparent 70%);
+    }
+    .dark .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.25) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 75%);
+    }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-[#0c0d14] text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-white/80 dark:bg-[#0c0d14]/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-accent-teal flex items-center justify-center text-white font-bold text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">JS</span>
+        <div class="flex flex-col">
+          <span class="font-bold text-base tracking-tight group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Joy Saha</span>
+          <span class="text-[10px] text-slate-500 dark:text-slate-400 tracking-wider font-semibold uppercase -mt-1">Product Manager</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+        <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Case Studies</a>
+        <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Competencies</a>
+        <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Experience</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode Toggle Button -->
+        <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i class="ph ph-moon text-lg dark:hidden"></i>
+          <i class="ph ph-sun text-lg hidden dark:block"></i>
+        </button>
+
+        <a href="#projects" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow transition-all">
+          <span>View 8 Projects</span>
+          <i class="ph ph-arrow-down text-sm"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="ph ph-list text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0c0d14]/95 px-5 py-4 space-y-3">
+      <a href="#about" class="block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600 mobile-nav-link">About</a>
+      <a href="#projects" class="block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600 mobile-nav-link">Case Studies & Capstone</a>
+      <a href="#skills" class="block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600 mobile-nav-link">Product Competencies</a>
+      <a href="#experience" class="block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600 mobile-nav-link">Operations & Leadership</a>
+      <a href="#contact" class="block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600 mobile-nav-link">Get in Touch</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 hero-glow overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:w-3/5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-200 dark:border-brand-900 bg-brand-50/70 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-semibold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Available for Product Manager Roles</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white leading-[1.15]">
+            Bridging operational rigor with <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-indigo-500 to-accent-teal">customer-centric AI & fintech products</span>.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+            I am an aspiring Product Manager with <strong>7+ years</strong> of fintech and banking operations leadership (Moneyview, IDFC FIRST Bank). Proven capability shipping <strong>8 hands-on product studies and AI prototypes</strong>—from 0-to-1 PRDs, user interviews, and funnel cohort analytics to production code.
+          </p>
+
+          <!-- Quick Metric Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400">7+ Yrs</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Fintech & Ops Lead</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="block text-2xl font-extrabold text-accent-teal">8</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Product Case Studies</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="block text-2xl font-extrabold text-accent-emerald">30+</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Cross-functional Team</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="block text-2xl font-extrabold text-indigo-500">BCA+PGDM</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tech + Marketing Core</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3 pt-4">
+            <a href="#projects" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md hover:shadow-indigo-500/20 transition-all flex items-center gap-2">
+              <i class="ph ph-briefcase text-lg"></i>
+              <span>Explore Product Projects</span>
+            </a>
+            <a href="https://out-loud-app.vercel.app" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-black dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-medium text-sm transition-all flex items-center gap-2 border border-slate-700">
+              <i class="ph ph-sparkle text-amber-400 text-lg"></i>
+              <span>Live Capstone: Out Loud</span>
+              <i class="ph ph-arrow-up-right text-xs text-slate-400"></i>
+            </a>
+            <button onclick="copyEmail()" class="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm transition-all flex items-center gap-2" title="Copy Email">
+              <i class="ph ph-copy text-base"></i>
+              <span id="copyEmailText">Copy Email</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-6 pt-2 text-xs text-slate-500 dark:text-slate-400">
+            <span class="flex items-center gap-1.5"><i class="ph ph-map-pin text-brand-600 text-sm"></i> Kolkata, West Bengal, India</span>
+            <span class="flex items-center gap-1.5"><i class="ph ph-envelope-simple text-brand-600 text-sm"></i> joysaha669@gmail.com</span>
+            <span class="flex items-center gap-1.5"><i class="ph ph-phone text-brand-600 text-sm"></i> +91 8240279066</span>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Card -->
+        <div class="lg:w-2/5 w-full">
+          <div class="relative rounded-2xl p-6 bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-44 h-44 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="ml-2 text-xs font-mono text-slate-500">joy_saha_pm_mindset.json</span>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300">Active</span>
+            </div>
+
+            <!-- Interactive Highlight Stack -->
+            <div class="space-y-4 pt-4 text-xs font-mono">
+              <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
+                <p class="text-slate-400 font-sans font-medium text-[11px] mb-1">NORTH STAR FOCUS</p>
+                <p class="text-brand-600 dark:text-brand-300 font-semibold font-sans text-sm">Week-4 Practice Completion (Out Loud: 25%)</p>
+                <p class="text-slate-500 dark:text-slate-400 font-sans text-xs mt-0.5">WTU (Zomato) &bull; AR Pickup Latency (Uber)</p>
+              </div>
+
+              <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
+                <p class="text-slate-400 font-sans font-medium text-[11px] mb-1">CORE SUPERPOWERS</p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 font-sans">PRD & User Stories</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 font-sans">Funnel Churn Cohorts</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 font-sans">AI Prototype Dev</span>
+                  <span class="px-2 py-0.5 rounded bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 font-sans">Lifecycle & SLAs</span>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-slate-400 font-sans text-[11px] block">FLAGSHIP DEPLOYED WORK</span>
+                  <span class="font-sans font-bold text-slate-800 dark:text-white text-xs">Out Loud AI Coach</span>
+                </div>
+                <a href="https://out-loud-app.vercel.app" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded bg-brand-600 text-white font-sans text-xs font-semibold flex items-center gap-1 hover:bg-brand-700 transition">
+                  Demo <i class="ph ph-arrow-up-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mini Quote -->
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 italic">
+              "7 years of handling customer escalations taught me how products break in the real world. Now I design them to endure and delight."
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Why PM Section -->
+  <section id="about" class="py-16 bg-white dark:bg-[#11121c] border-y border-slate-200 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">The Journey</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
+            From Operational Scaler to Product Strategist
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            Leading a 30-member team in digital lending at <strong>Moneyview</strong> and driving third-party partner operations at <strong>IDFC FIRST Bank</strong> immersed me in the ground realities of customer friction, drop-offs, and compliance constraints.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            Coupled with my <strong>BCA (technical background)</strong> and <strong>PGDM in Marketing</strong>, I bridge business objectives with user empathy and engineering execution—synthesizing raw feedback into high-leverage PRDs, experiments, and scalable software solutions.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:border-brand-500/50 transition">
+            <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center text-xl mb-3">
+              <i class="ph ph-compass-tool"></i>
+            </div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1">0-to-1 Product Discovery</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Conducted 1:1 user interviews, synthesized pain points, prioritized MVP scopes, and mapped end-to-end customer funnels.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:border-brand-500/50 transition">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xl mb-3">
+              <i class="ph ph-chart-line-up"></i>
+            </div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1">Data & Cohort Analysis</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Tracked North Star, input, and guardrail metrics; mapped drop-off funnels, A/B experiment designs, and churn cohort levers.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:border-brand-500/50 transition">
+            <div class="w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300 flex items-center justify-center text-xl mb-3">
+              <i class="ph ph-code"></i>
+            </div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1">AI & Technical Literacy</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              BCA grad fluent in system architectures, SQL, API integrations (Google Gemini API), prompt engineering, and rapid AI prototyping.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:border-brand-500/50 transition">
+            <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 flex items-center justify-center text-xl mb-3">
+              <i class="ph ph-users-three"></i>
+            </div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1">Stakeholder Alignment</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Managed 30+ team members, vendor partners, and cross-functional technology/business units with strict SLA and regulatory adherence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects & Case Studies -->
+  <section id="projects" class="py-20 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Portfolio Work</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white mt-1">
+        8 Hands-on Product Projects & Case Studies
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">
+        From a full-stack deployed AI mock interview coach to deep strategic teardowns of high-growth consumer apps and B2B SaaS platforms.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center justify-center flex-wrap gap-2 mt-6">
+        <button onclick="filterProjects('all')" class="filter-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-600 text-white transition-all" data-category="all">All (8)</button>
+        <button onclick="filterProjects('capstone')" class="filter-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" data-category="capstone">Capstone AI</button>
+        <button onclick="filterProjects('growth')" class="filter-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" data-category="growth">Growth & Retention</button>
+        <button onclick="filterProjects('discovery')" class="filter-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" data-category="discovery">Discovery & UX</button>
+        <button onclick="filterProjects('strategy')" class="filter-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" data-category="strategy">B2B & Systems</button>
+      </div>
+    </div>
+
+    <!-- Flagship Hero Card: Out Loud -->
+    <div class="mb-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 text-white relative overflow-hidden shadow-2xl border border-indigo-500/30">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
+        <div class="lg:w-2/3 space-y-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-amber-400 text-slate-950 flex items-center gap-1">
+              <i class="ph ph-crown-simple text-sm"></i> Flagship Capstone
+            </span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-800/80 text-indigo-200 border border-indigo-700">
+              AI Mock Interview Coach
+            </span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-medium text-slate-300 bg-slate-800/60">
+              React &bull; Tailwind &bull; Google Gemini API &bull; Vercel
+            </span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight font-display">
+            Out Loud — AI Speaking Coach for Job Seekers
+          </h3>
+
+          <p class="text-indigo-100/90 text-sm leading-relaxed">
+            Addressed the high-anxiety obstacle of job seekers freezing on unexpected follow-up interview questions. Led discovery across 14 job candidates, competitor benchmarking (ELSA Speak, Google Interview Warmup), PRD drafting, wireframing, and built an interactive AI prototype with speech evaluation.
+          </p>
+
+          <!-- Core Metrics Row -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
+              <span class="text-[11px] text-indigo-200 block">North Star Metric</span>
+              <span class="text-xl font-extrabold text-white">25% Target</span>
+              <span class="text-[10px] text-indigo-300 block">W-4 Practice Completion</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
+              <span class="text-[11px] text-indigo-200 block">Discovery Depth</span>
+              <span class="text-xl font-extrabold text-white">14 Interviews</span>
+              <span class="text-[10px] text-indigo-300 block">Benchmarked 2 Giants</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 col-span-2 sm:col-span-1">
+              <span class="text-[11px] text-indigo-200 block">Execution</span>
+              <span class="text-xl font-extrabold text-emerald-400">Live & Deployed</span>
+              <span class="text-[10px] text-indigo-300 block">V1/V2 Scoped & GTM Plan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action column -->
+        <div class="lg:w-1/3 flex flex-col gap-3 w-full sm:w-auto">
+          <a href="https://out-loud-app.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full text-center px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-indigo-950 font-bold text-sm shadow-lg transition flex items-center justify-center gap-2">
+            <span>Launch Live App Demo</span>
+            <i class="ph ph-arrow-square-out text-lg"></i>
+          </a>
+          <button onclick="openProjectModal('outloud')" class="w-full text-center px-6 py-3.5 rounded-xl bg-indigo-800/80 hover:bg-indigo-700/80 text-white font-semibold text-sm border border-indigo-600 transition flex items-center justify-center gap-2">
+            <i class="ph ph-file-text text-lg"></i>
+            <span>Read Product Case Study</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 Complementary Projects Grid -->
+    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 1. Zomato -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="growth">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400">Retention & Growth</span>
+            <span class="text-slate-400">Zomato Teardown</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            Delivery Funnel & Cohort Retention Strategy
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Mapped 7-stage funnel (App Open &rarr; Food Delivered), isolated 3 key friction drop-offs, segmented churn into 6 tailored cohorts, and created 3 prioritized pilot interventions.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>North Star:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Weekly Transacting Users (WTU)</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Pilot Scope:</span>
+              <strong class="text-slate-800 dark:text-slate-200">10% Traffic A/B Test</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('zomato')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Analysis <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">Funnel &bull; 6 Cohorts</span>
+        </div>
+      </div>
+
+      <!-- 2. Airbnb India -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="growth">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">Product-Led Growth</span>
+            <span class="text-slate-400">Airbnb India</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            India Growth Loops & Blended Monetization
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Engineered 3 viral product-embedded growth loops (Host Referral, Guest-to-Host conversion, and Localized Experiences) paired with lean experiment hypotheses.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Revenue Model:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Blended Subscriptions & B2B</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Loops Built:</span>
+              <strong class="text-slate-800 dark:text-slate-200">3 Embedded Viral Loops</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('airbnb')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Strategy <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">PLG &bull; Hypotheses</span>
+        </div>
+      </div>
+
+      <!-- 3. Uber "Find My Ride" -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="discovery">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400">User Discovery</span>
+            <span class="text-slate-400">Uber Mobility</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            "Find My Ride" AR Pickup Discovery
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Investigated high pickup cancellation rates via 10 commuter interviews (15-question script). Discovered last-50m chaos and conceptualized Augmented Reality pathfinding.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Cancellations:</span>
+              <strong class="text-emerald-600 dark:text-emerald-400">-15% Projected</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Pickup Speed:</span>
+              <strong class="text-emerald-600 dark:text-emerald-400">+22% Faster Pickups</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('uber')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Discovery <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">AR &bull; User Research</span>
+        </div>
+      </div>
+
+      <!-- 4. Corporate Learning B2B SaaS -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="strategy">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400">B2B SaaS Strategy</span>
+            <span class="text-slate-400">Corporate EdTech</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            Enterprise Learning Platform 3-Yr Roadmap
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Formulated multi-year expansion targeting mid-market enterprises. Structured defensibility moats (deep HRMS integrations, switching costs, analytics lock-in) and land-and-expand GTM.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Target:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Mid-sized Enterprises</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>GTM Motion:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Land-and-Expand</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('b2bsaas')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Roadmap <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">Moats &bull; GTM</span>
+        </div>
+      </div>
+
+      <!-- 5. System Design - Learning Recommendation -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="strategy">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400">Technical PM</span>
+            <span class="text-slate-400">System Architecture</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            Personalised Rec System & High Availability
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Specified a 5-microservice architecture with latency constraints under 500ms and 99.9% uptime. Resolved critical trade-offs between dynamic personalisation and data privacy.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Latency Target:</span>
+              <strong class="text-emerald-600 dark:text-emerald-400">&lt; 500 ms SLA</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Personas & Specs:</span>
+              <strong class="text-slate-800 dark:text-slate-200">3 Personas, 7 Features</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('systemdesign')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Architecture <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">5 Services &bull; &lt;500ms</span>
+        </div>
+      </div>
+
+      <!-- 6. AI PRD Assistant -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="capstone">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">GenAI & Prompt Eng</span>
+            <span class="text-slate-400">Meta PM Tooling</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            14-Section AI PRD Assistant & Guardrails
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Constructed advanced prompt architecture that outputs rigorous 14-section PRDs with anti-hallucination guardrails; tested via "Smart Meeting Recap" feature PRD.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Framework:</span>
+              <strong class="text-slate-800 dark:text-slate-200">14-Section PRD Template</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Test Benchmark:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Smart Meeting Recap</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('aiprd')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Prompt Design <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">Prompting &bull; Guardrails</span>
+        </div>
+      </div>
+
+      <!-- 7. Nykaa UX & Advisor -->
+      <div class="project-card group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition-all hover:shadow-lg flex flex-col justify-between" data-category="discovery">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-md font-semibold bg-rose-50 dark:bg-rose-950/40 text-pink-600 dark:text-pink-400">E-Commerce UX</span>
+            <span class="text-slate-400">Nykaa Beauty</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">
+            Shopping Journey Audit & "Smart Beauty Advisor"
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Critiqued checkout drop-offs and catalog overload in omnichannel beauty. Developed buyer personas and specified an intelligent recommendation advisor to boost conversion.
+          </p>
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Key Proposal:</span>
+              <strong class="text-slate-800 dark:text-slate-200">Smart Beauty Advisor</strong>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Goal:</span>
+              <strong class="text-emerald-600 dark:text-emerald-400">Conversion Rate Lift</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <button onclick="openProjectModal('nykaa')" class="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline">
+            View Journey Map <i class="ph ph-arrow-right"></i>
+          </button>
+          <span class="text-[11px] text-slate-400">Omnichannel &bull; UX</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Product Management Skills & Toolkit -->
+  <section id="skills" class="py-20 bg-slate-100/70 dark:bg-[#11121c] border-y border-slate-200 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Competencies</span>
+        <h2 class="text-3xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white mt-1">
+          Skills, Methodologies & Tooling
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+          Grounded in data rigor, customer psychology, and modern AI engineering workflows.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Category 1 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center text-xl">
+            <i class="ph ph-strategy"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Product Management</h3>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-2">
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> Product Strategy & Vision</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> Roadmap Planning & Execution</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> PRD & User Stories Drafting</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> MVP Scoping & Prioritization</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> Go-to-Market Strategy (GTM)</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> Product-Led Growth & Pricing</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-brand-600 font-bold"></i> Agile / Scrum Sprints</li>
+          </ul>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl">
+            <i class="ph ph-chart-polar"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Research & Analytics</h3>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-2">
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> User Research & 1:1 Interviews</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> User Persona Development</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> Competitive Benchmarking</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> Customer Journey Funnels</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> North Star, Activation & Retention</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> A/B Testing & Hypothesis</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-teal-600 font-bold"></i> Funnel & Cohort Retention Analysis</li>
+          </ul>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 flex items-center justify-center text-xl">
+            <i class="ph ph-users"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Ops & Leadership</h3>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-2">
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Cross-functional Alignment</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Team Leadership (30+ Members)</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Vendor & Partner SLA Governance</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Escalation & Root-Cause Ops</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Fintech Risk & BFSI Compliance</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Customer Lifecycle Retention</li>
+            <li class="flex items-center gap-2"><i class="ph ph-check text-amber-600 font-bold"></i> Onboarding & Hiring Processes</li>
+          </ul>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-300 flex items-center justify-center text-xl">
+            <i class="ph ph-wrench"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Tools & Technology</h3>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Google Analytics (GA4)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Jira & Trello</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Figma & Miro</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">SQL</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">MS Excel (Advanced)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Google Gemini API</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Claude Code</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">WebEngage</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Vercel</span>
+            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Prompt Engineering</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Timeline -->
+  <section id="experience" class="py-20 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Career Trajectory</span>
+      <h2 class="text-3xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white mt-1">
+        Professional Experience & Leadership
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+        Over 7 years of owning customer lifecycles, resolving complex operational bottlenecks, and steering cross-functional units in fintech and banking.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
+      
+      <!-- Experience 1: Moneyview -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs shadow-md">
+          <i class="ph ph-briefcase"></i>
+        </div>
+        
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+            <div>
+              <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Fintech Lending</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Operations Manager, Customer Lifecycle & Portfolio Performance</h3>
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Whizdm Finance (Moneyview) &bull; Kolkata</p>
+            </div>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/50 text-brand-700 dark:text-brand-300 self-start sm:self-auto">
+              Dec 2023 — Apr 2026
+            </span>
+          </div>
+
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-outside ml-4 leading-relaxed">
+            <li>Led a <strong>30-member cross-functional team</strong> of on-roll managers and external partner agencies, owning post-loan customer lifecycle operations for a digital lending portfolio.</li>
+            <li>Built and maintained granular daily/monthly KPI tracking dashboards in MS Excel, driving month-on-month improvement in customer query resolution rates.</li>
+            <li>Translated recurring user friction points from escalation logs and on-ground field audits into product and process improvements, significantly reducing customer turnaround time.</li>
+            <li>Aligned internal technology, business, and external partner stakeholders on SLAs, risk compliance, and operational priorities while leading hiring and onboarding.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Experience 2: IDFC FIRST Bank -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-full bg-slate-400 dark:bg-slate-700 text-white flex items-center justify-center text-xs">
+          <i class="ph ph-bank"></i>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+            <div>
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">BFSI Operations</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Operations Manager, Customer Experience & Partner Management</h3>
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-300">IDFC FIRST Bank</p>
+            </div>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 self-start sm:self-auto">
+              Aug 2020 — Oct 2023
+            </span>
+          </div>
+
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-outside ml-4 leading-relaxed">
+            <li>Managed multiple third-party vendor partners for <strong>3+ years</strong>, setting quarterly performance objectives and conducting periodic operational audits.</li>
+            <li>Directly handled high-priority walk-in escalations, translating voice-of-customer (VoC) feedback into actionable branch service workflow refinements.</li>
+            <li>Maintained zero-breach adherence to strict banking regulatory, privacy, and compliance guidelines.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Earlier Roles (Combined summary for readability) -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-full bg-slate-300 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center text-xs">
+          <i class="ph ph-clock-counter-clockwise"></i>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Early Foundational Experience</span>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between items-start">
+                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Sales Executive</h4>
+                <span class="text-[11px] text-slate-500">2016 — 2017</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">Teleminds Infotech (Client: Sumo Power, Australia)</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Identified customer energy needs and handled cross-sell conversion cycles.</p>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between items-start">
+                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Business Associate</h4>
+                <span class="text-[11px] text-slate-500">2015 — 2016</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">Wipro Ltd. (HP Laptop & Notebook Technical Support)</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Diagnosed software and hardware bugs, cultivating a first-principles technical troubleshooting foundation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education & Academic Foundation -->
+  <section class="py-16 bg-slate-100/60 dark:bg-[#11121c] border-t border-slate-200 dark:border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="max-w-xl mb-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Credentials</span>
+        <h2 class="text-2xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
+          Education & Dual Background
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-2xl shrink-0">
+            <i class="ph ph-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 dark:text-brand-400">Completed 2020</span>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">PGDM in Marketing</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Sri Balaji Society, Pune</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Focus on consumer behavior, brand strategy, digital market segmentation, and quantitative market research.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl shrink-0">
+            <i class="ph ph-desktop"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Completed 2013</span>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Bachelor of Computer Applications (BCA)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Future Institute of Engineering and Management, Kolkata</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Foundational computer science, relational database management (SQL), algorithms, and software development methodologies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Collaboration Section -->
+  <section id="contact" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-brand-50 to-white dark:from-slate-900 dark:to-[#0c0d14] border border-brand-200 dark:border-slate-800 shadow-xl space-y-6">
+      <div class="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center text-3xl mx-auto shadow-md">
+        <i class="ph ph-handshake"></i>
+      </div>
+      
+      <div class="space-y-2">
+        <h2 class="text-3xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
+          Let’s Build High-Impact Products Together
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto">
+          Currently interviewing for <strong>Associate Product Manager, Product Manager, and Growth PM</strong> roles. Open to discussions on AI applications, fintech platforms, or consumer products.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="mailto:joysaha669@gmail.com" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md hover:shadow transition flex items-center gap-2">
+          <i class="ph ph-envelope-simple text-lg"></i>
+          <span>Send Direct Email</span>
+        </a>
+        <a href="tel:+918240279066" class="px-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-medium text-sm transition flex items-center gap-2">
+          <i class="ph ph-phone text-lg"></i>
+          <span>+91 8240279066</span>
+        </a>
+        <a href="https://out-loud-app.vercel.app" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-medium text-sm transition flex items-center gap-2">
+          <i class="ph ph-globe text-lg"></i>
+          <span>Live Demo App</span>
+        </a>
+      </div>
+
+      <div class="pt-6 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500">
+        Based in Kolkata, West Bengal, India &bull; Open to Remote and Relocation opportunities
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span>&copy; <span id="currentYear"></span> Joy Saha. Product Management Portfolio.</span>
+      <div class="flex items-center gap-4">
+        <a href="#hero" class="hover:underline">Back to top</a>
+        <span>&bull;</span>
+        <a href="mailto:joysaha669@gmail.com" class="hover:underline">joysaha669@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Deep Dive Container -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-4 sm:p-6 flex items-center justify-center">
+    <div class="relative w-full max-w-3xl rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8 my-8 text-left max-h-[90vh] overflow-y-auto">
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+
+      <!-- Dynamic Content Injection -->
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 px-4 py-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-semibold shadow-lg flex items-center gap-2">
+    <i class="ph ph-check-circle text-emerald-500 text-base"></i>
+    <span id="toastMsg">Email copied to clipboard!</span>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Project Detailed Data Store based on Resume
+    const projectDetails = {
+      outloud: {
+        title: "Out Loud — AI Mock Interview Speaking Coach",
+        subtitle: "Capstone Project | React, Tailwind CSS, Google Gemini API, Vercel",
+        badge: "Flagship AI Prototype",
+        liveUrl: "https://out-loud-app.vercel.app",
+        overview: "An AI-powered speaking coach built to solve the anxiety job candidates experience when hit with unplanned, follow-up behavioral and situational interview questions.",
+        sections: [
+          {
+            heading: "1. Problem Discovery & User Research",
+            content: "Surveyed 14 job seekers and executed structured competitive benchmarking against existing players (ELSA Speak, Google Interview Warmup). Identified the core emotional breakdown point: users do not struggle solely with content, but freeze on unexpected follow-up queries under conversational pressure."
+          },
+          {
+            heading: "2. Scoping & Product PRD",
+            content: "Defined product vision and scope for V1 vs V2 features. Prioritized real-time voice capture, intelligent generative follow-up generation via Google Gemini API, and dynamic feedback on clarity, filler words, and answer structure (STAR method)."
+          },
+          {
+            heading: "3. Prototype Development & Deployment",
+            content: "Mapped multi-state user journeys, crafted low-fidelity wireframes, and built an end-to-end interactive prototype using React, Tailwind CSS, and Google Gemini API, deployed on Vercel."
+          },
+          {
+            heading: "4. Metrics Framework & A/B Experimentation",
+            content: "Selected Week-4 Practice Completion Rate as the primary North Star Metric (25% target), paired with activation rates (completing 1st mock interview) and D7 retention. Designed an A/B test variant evaluating instant vs. post-session feedback, accompanied by a proactive risk mitigation plan."
+          }
+        ]
+      },
+      zomato: {
+        title: "Zomato Delivery Experience & Retention Strategy",
+        subtitle: "Growth Teardown & Funnel Optimization",
+        badge: "Retention & Funnels",
+        overview: "A granular examination of food ordering friction points, customer churn cohorts, and targeted retention levers for India's leading delivery platform.",
+        sections: [
+          {
+            heading: "1. 7-Stage Funnel Breakdown",
+            content: "Mapped the full user experience from App Open &rarr; Restaurant Discovery &rarr; Menu Selection &rarr; Cart Addition &rarr; Checkout & Payment &rarr; Live Order Tracking &rarr; Delivery Completion. Pinpointed the 3 biggest friction points causing drop-offs: high delivery fee sticker shock at checkout, uncertain ETA variations during peak rains, and out-of-stock menu items."
+          },
+          {
+            heading: "2. 6-Cohort Churn Segmentation",
+            content: "Deconstructed lapsed users into 6 distinct behavioral cohorts (e.g., price-sensitive discount seekers, peak-hour impatient orderers, cart abandoners, single-order trialists). Formulated high-impact retention levers for each cohort, including dynamic threshold delivery waivers and ETA reliability badges."
+          },
+          {
+            heading: "3. Metrics & Experimentation Pilot",
+            content: "Designated Weekly Transacting Users (WTU) as the North Star Metric. Balanced it with input metrics (Cart-to-Order Conversion, ETA Accuracy Index) and lagging metrics (30-day retention). Prioritized 3 pilot experiments via Impact-Effort matrix slated for a 10% traffic rollout."
+          }
+        ]
+      },
+      airbnb: {
+        title: "Airbnb India — Product-Led Growth (PLG) Strategy",
+        subtitle: "Viral Growth Loops & Full-Funnel Monetization",
+        badge: "Product-Led Growth",
+        overview: "Tailoring the global Airbnb model to India's unique market dynamics through self-reinforcing viral loops and localized monetization streams.",
+        sections: [
+          {
+            heading: "1. Three Embedded Growth Loops",
+            content: "Engineered 3 product-led growth loops: (1) Host Referral Engine (local hosts recruiting tier-2 town hosts for localized rewards), (2) Guest-to-Host Flywheel (incentivizing frequent travelers with spare properties upon checkout), and (3) Local Experiences Loop (guests sharing hyper-local cultural tours on social channels)."
+          },
+          {
+            heading: "2. Lean MVP Hypotheses",
+            content: "Drafted testable hypotheses and success metrics for each loop to validate virality coefficients (k-factor > 0.35) and reduce customer acquisition costs (CAC) across key domestic holiday corridors."
+          },
+          {
+            heading: "3. Blended Monetization Model for India",
+            content: "Proposed an India-specific blended revenue architecture incorporating host tier subscriptions, localized convenience fee models (UPI/instant payment incentives), and B2B corporate offsite booking packages."
+          }
+        ]
+      },
+      uber: {
+        title: "Uber 'Find My Ride' User Discovery",
+        subtitle: "Qualitative Field Discovery & AR Pathfinding Solution",
+        badge: "User Research & AR",
+        overview: "Deep-dive inquiry into the 'last-50-meters' friction where riders and drivers fail to spot each other in chaotic airport terminals and railway hubs.",
+        sections: [
+          {
+            heading: "1. Discovery Methodology",
+            content: "Interviewed 10 frequent daily commuters using a rigorous 15-point questionnaire. Synthesized qualitative interviews to identify cognitive load, confusion in dense pick-up zones, and inaccurate GPS pin drops."
+          },
+          {
+            heading: "2. Key Pain Points Isolated",
+            content: "Uncovered 4 recurring blockers: landmark miscommunication, inability to verify vehicle license plates in traffic queues, poor cellular GPS accuracy in multi-level parking, and high driver cancellation anxiety."
+          },
+          {
+            heading: "3. Proposed AR Solution & Impact Projections",
+            content: "Conceptualized an Augmented Reality (AR) camera pathfinding feature that highlights the driver's exact car orientation on the rider's phone camera feed. Modeled business outcomes: a 15% reduction in pickup cancellations and a 22% faster pickup turnaround time."
+          }
+        ]
+      },
+      b2bsaas: {
+        title: "Corporate Learning Platform — B2B SaaS Strategy",
+        subtitle: "Multi-Year Enterprise Product Roadmap & Defensibility",
+        badge: "B2B SaaS Strategy",
+        overview: "Comprehensive 2-to-3 year strategic roadmap for an enterprise upskilling and corporate learning management system (LMS).",
+        sections: [
+          {
+            heading: "1. Market Sizing & Beachhead Segment",
+            content: "Evaluated enterprise segments and selected mid-market businesses (500-2,500 employees) as the beachhead target due to quicker procurement velocity and acute skills gap pressures compared to slow-moving mega-enterprises."
+          },
+          {
+            heading: "2. Defensibility & Moats",
+            content: "Identified 3 core defensibility levers: deep bidirectional integrations into enterprise HRMS (Workday, Darwinbox, BambooHR), high data switching costs through accumulated employee competency profiles, and peer-to-peer internal mentorship networks."
+          },
+          {
+            heading: "3. Land-and-Expand GTM Motion",
+            content: "Architected a bottom-up land-and-expand motion: landing within engineering/sales teams via team-lead credit budgets, then upselling executive enterprise-wide seat licenses backed by ROI analytics dashboards."
+          }
+        ]
+      },
+      systemdesign: {
+        title: "Personalised Learning Recommendation System",
+        subtitle: "System Architecture, Latency SLAs & Privacy Trade-offs",
+        badge: "Technical PM & Systems",
+        overview: "Technical system design defining microservices, data pipelines, and SLA constraints for a high-throughput recommendation engine.",
+        sections: [
+          {
+            heading: "1. User Personas & Feature Prioritization",
+            content: "Developed 3 user personas (Career Pivoters, Skill Reinforcers, Casual Learners) and prioritized 7 core system capabilities including cold-start question prompts, skill decay alerts, and adaptive difficulty."
+          },
+          {
+            heading: "2. 5-Service Microservice Architecture",
+            content: "Outlined a 5-microservice topology: User Profiling Service, Content Ingestion Pipeline, Vector Embedding / Similarity Search Engine, Real-time Scoring Service, and Notification Dispatcher. Established performance benchmarks of <500ms API response latency and 99.9% uptime."
+          },
+          {
+            heading: "3. Personalisation vs. Privacy Trade-off",
+            content: "Addressed data governance tradeoffs by proposing client-side session hashing, localized differential privacy, and explicit permission toggles for user learning telemetry."
+          }
+        ]
+      },
+      aiprd: {
+        title: "AI PRD Assistant — Prompt Architecture",
+        subtitle: "Prompt Engineering & Automated PRD Generation",
+        badge: "AI Product Tooling",
+        overview: "Designing system-level LLM prompt architecture to help product managers create structured, defensible 14-section PRDs.",
+        sections: [
+          {
+            heading: "1. 14-Section PRD Framework",
+            content: "Constructed a comprehensive PRD template covering Executive Summary, User Personas, Problem Statements, In-Scope / Out-of-Scope boundaries, User Stories & Acceptance Criteria, Edge Cases, Data Instrumentation, and GTM Risks."
+          },
+          {
+            heading: "2. Anti-Hallucination Guardrails",
+            content: "Engineered few-shot context constraints and chain-of-thought verification prompting to prevent LLMs from inventing fictitious user research data, enforcing clear labeling for simulated vs. empirical metrics."
+          },
+          {
+            heading: "3. Benchmark Test: 'Smart Meeting Recap'",
+            content: "Tested and refined the system prompt by generating a complete, production-grade PRD for an enterprise 'Smart Meeting Recap' feature, analyzing user story quality and technical API dependencies."
+          }
+        ]
+      },
+      nykaa: {
+        title: "Nykaa Omnichannel Shopping Journey & UX Audit",
+        subtitle: "E-Commerce Funnel Optimization & Beauty Advisor",
+        badge: "E-Commerce UX",
+        overview: "User experience critique of India's leading beauty destination, addressing decision paralysis in vast skincare/makeup catalogs.",
+        sections: [
+          {
+            heading: "1. Shopping Journey Mapping",
+            content: "Cataloged end-to-end user touchpoints across app onboarding, product discovery, filter navigation, ingredient verification, review credibility, and checkout."
+          },
+          {
+            heading: "2. Persona & Drop-off Root Cause",
+            content: "Created user personas representing 'The Overwhelmed Skincare Novice'. Identified that 40%+ drop-offs occurred due to uncertainty regarding product suitability with user skin types and conflicting shade comparisons."
+          },
+          {
+            heading: "3. 'Smart Beauty Advisor' Proposal",
+            content: "Designed a lightweight 3-step interactive advisor feature: skin profile quiz, routine compatibility checks, and shade matcher integration to decrease returns and increase cart conversion rates."
+          }
+        ]
+      }
+    };
+
+    // Modal Control Functions
+    function openProjectModal(key) {
+      const data = projectDetails[key];
+      if (!data) return;
+
+      const modal = document.getElementById('projectModal');
+      const content = document.getElementById('modalContent');
+
+      let sectionsHtml = data.sections.map(s => `
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            ${s.heading}
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-3.5">${s.content}</p>
+        </div>
+      `).join('');
+
+      let liveButtonHtml = data.liveUrl ? `
+        <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow transition">
+          <span>Open Live Prototype</span>
+          <i class="ph ph-arrow-up-right"></i>
+        </a>
+      ` : '';
+
+      content.innerHTML = `
+        <div class="space-y-6">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-brand-100 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 uppercase">${data.badge}</span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">${data.title}</h3>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">${data.subtitle}</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <strong>Executive Overview:</strong> ${data.overview}
+          </div>
+
+          <div class="space-y-5 pt-1">
+            ${sectionsHtml}
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            ${liveButtonHtml}
+            <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+              Close Preview
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on background click
+    document.getElementById('projectModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeProjectModal();
+      }
+    });
+
+    // Escape key to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    // Project Filter Function
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const tabs = document.querySelectorAll('.filter-tab');
+
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-category') === category) {
+          tab.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          tab.classList.add('bg-brand-600', 'text-white');
+        } else {
+          tab.classList.remove('bg-brand-600', 'text-white');
+          tab.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById('themeToggle');
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Detect saved theme or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isDark);
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Clipboard copy with notification fallback
+    function copyEmail() {
+      const email = 'joysaha669@gmail.com';
+      const dummy = document.createElement('textarea');
+      dummy.value = email;
+      document.body.appendChild(dummy);
+      dummy.select();
+      try {
+        document.execCommand('copy');
+        showToast('Email copied: joysaha669@gmail.com');
+      } catch (err) {
+        showToast('joysaha669@gmail.com');
+      }
+      document.body.removeChild(dummy);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Current Year Update
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
